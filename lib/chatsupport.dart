@@ -13,7 +13,7 @@ class _StudySwapChatScreenState extends State<StudySwapChatScreen> {
   final TextEditingController _controller = TextEditingController();
 
   static const String GEMINI_API_KEY =
-      'AIzaSyCsRQqouq8Yr84bH7kzNanz724Ly8YGCiE';
+      'AIzaSyAALumHL7C_dFIH1_Ijc2PCDv5s3L6gFKU';
 
   final List<Map<String, String>> messages = [
     {
@@ -299,7 +299,30 @@ class _StudySwapChatScreenState extends State<StudySwapChatScreen> {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(24),
-                          borderSide: BorderSide.none,
+                          borderSide: BorderSide(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Colors.grey.shade700
+                                : Colors.grey.shade300,
+                            width: 1,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: BorderSide(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Colors.grey.shade700
+                                : Colors.grey.shade300,
+                            width: 1,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: BorderSide(
+                            color: Colors.blue.shade600,
+                            width: 2,
+                          ),
                         ),
                         counterText: '',
                       ),
