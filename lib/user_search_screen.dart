@@ -211,7 +211,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
         children: [
           Container(
             padding: const EdgeInsets.all(16),
-            color: Theme.of(context).cardColor,
+            color: Theme.of(context).scaffoldBackgroundColor,
             child: TextField(
               controller: _searchController,
               style: TextStyle(
@@ -220,7 +220,9 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
               decoration: InputDecoration(
                 hintText: 'Search by name or email...',
                 hintStyle: TextStyle(
-                  color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.5),
+                  color: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.color?.withOpacity(0.5),
                 ),
                 prefixIcon: Icon(
                   Icons.search,
@@ -230,7 +232,9 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                     ? IconButton(
                         icon: Icon(
                           Icons.clear,
-                          color: Theme.of(context).iconTheme.color?.withOpacity(0.6),
+                          color: Theme.of(
+                            context,
+                          ).iconTheme.color?.withOpacity(0.6),
                         ),
                         onPressed: () {
                           setState(() {
@@ -297,14 +301,18 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                         Icon(
                           Icons.search_off,
                           size: 64,
-                          color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[600] : Colors.grey[400],
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.grey[600]
+                              : Colors.grey[400],
                         ),
                         const SizedBox(height: 16),
                         Text(
                           'No users found',
                           style: TextStyle(
                             fontSize: 18,
-                            color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7),
+                            color: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium?.color?.withOpacity(0.7),
                           ),
                         ),
                       ],
@@ -336,7 +344,10 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                            color: Theme.of(context).brightness == Brightness.dark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.1),
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Colors.black.withOpacity(0.3)
+                                : Colors.grey.withOpacity(0.1),
                             spreadRadius: 1,
                             blurRadius: 4,
                           ),
@@ -391,14 +402,20 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                                 school,
                                 style: TextStyle(
                                   fontSize: 13,
-                                  color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.color
+                                      ?.withOpacity(0.7),
                                 ),
                               ),
                             Text(
                               email,
                               style: TextStyle(
                                 fontSize: 12,
-                                color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                                color: Theme.of(
+                                  context,
+                                ).textTheme.bodyMedium?.color?.withOpacity(0.6),
                               ),
                             ),
                           ],

@@ -148,7 +148,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
             // Search and Filter Section
             Container(
               padding: const EdgeInsets.all(16),
-              color: Theme.of(context).cardColor,
+              color: Theme.of(context).scaffoldBackgroundColor,
               child: Column(
                 children: [
                   // Search Bar
