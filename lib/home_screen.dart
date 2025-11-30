@@ -108,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
+    final bool isSearching = _searchController.text.isNotEmpty;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -119,20 +120,38 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Welcome Section
-              //if (user != null) _buildWelcomeSection(user),
               // Search Bar
               buildSearchBar(),
               const SizedBox(height: 24),
 
-              buildBannerCarousel(),
-              const SizedBox(height: 20),
+              // Animated Featured Section (Banner + Categories)
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: SizeTransition(
+                      sizeFactor: animation,
+                      axisAlignment: -1.0,
+                      child: child,
+                    ),
+                  );
+                },
+                child: !isSearching
+                    ? Column(
+                        key: const ValueKey('featured'),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          buildBannerCarousel(),
+                          const SizedBox(height: 20),
+                          _buildFeaturedSection(),
+                          const SizedBox(height: 32),
+                        ],
+                      )
+                    : const SizedBox.shrink(key: ValueKey('empty')),
+              ),
 
-              // Featured Categories
-              _buildFeaturedSection(),
-              const SizedBox(height: 32),
-
-              // Filter Section
+              // Filter Section (Nearby Offers)
               _buildFilterSection(),
               const SizedBox(height: 16),
 
@@ -743,7 +762,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Nearby Offers',
+              'Product Offers',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ],

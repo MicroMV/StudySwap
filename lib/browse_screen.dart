@@ -481,7 +481,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         color: Theme.of(context).textTheme.bodyLarge?.color,
                         height: 1.1, // Tighter line height
                       ),
-                      maxLines: 2,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4), // Reduced from 6 to 4
